@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -64,14 +66,47 @@ public class DoctorService implements DoctorRepo{
 
     @Override
     public String terminate(int doctorId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'terminate'");
+        temporaryDoctors = readAll();
+        boolean status = temporaryDoctors.
+        removeIf(doc->doc.getDoctorId()==doctorId);
+        try {
+            objectMapper.writeValue(file, temporaryDoctors);
+        } catch (StreamWriteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (DatabindException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return status?"terminated":"failed to terminate";
     }
 
     @Override
     public String update(Doctor doctor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        temporaryDoctors = readAll();
+        for(int index=0;index<temporaryDoctors.size();index++){
+            if(temporaryDoctors.get(index).getDoctorId()==doctor.getDoctorId()){
+                // replace
+                temporaryDoctors.set(index, doctor);
+                try {
+                    objectMapper.writeValue(file, temporaryDoctors);
+                } catch (StreamWriteException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (DatabindException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                return "updated";
+            }
+        }
+        return "Not updated";
     }
     
 }
