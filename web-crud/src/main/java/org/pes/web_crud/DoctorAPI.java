@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/doc")
 public class DoctorAPI {
@@ -43,7 +45,7 @@ public class DoctorAPI {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<String> callInsert(@RequestBody Doctor doctor){
+    public ResponseEntity<String> callInsert(@Valid @RequestBody Doctor doctor){
         String res = doctorService.insert(doctor);
         return res.equals(doctor.getDoctorName()+" recruited")?
         ResponseEntity.status(HttpStatus.CREATED).body(res)

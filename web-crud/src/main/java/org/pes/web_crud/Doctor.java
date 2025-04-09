@@ -1,17 +1,21 @@
 package org.pes.web_crud;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+
 // POJO 
 public class Doctor {
+    @Min(value = 1, message = "{err.id}")
     private int doctorId;
+    @NotNull(message = "{err.name.empty}")
+    @Pattern(regexp = "^[a-zA-Z ]{3,}", message = "{err.name}")
     private String doctorName;
+    @NotNull(message = "{err.dept.empty}")
+    @Pattern(regexp = "^[a-zA-Z ]{10,}", message = "{err.dept}")
     private String doctorDepartment;
+    @Min(value = 1, message = "{err.exp}")
     private int doctorExperience;
-    public Doctor(int doctorId, String doctorName, String doctorDepartment, int doctorExperience) {
-        this.doctorId = doctorId;
-        this.doctorName = doctorName;
-        this.doctorDepartment = doctorDepartment;
-        this.doctorExperience = doctorExperience;
-    }
     public Doctor() {
     }
     @Override
