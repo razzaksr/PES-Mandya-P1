@@ -21,7 +21,9 @@ import jakarta.validation.Valid;
 public class DoctorAPI {
     // dependency injection
     @Autowired
-    DoctorService doctorService;
+    DoctorDbService doctorService;
+    // DoctorService doctorService;
+
 
     @PutMapping("/replace")
     public ResponseEntity<String> callUpdate(@RequestBody Doctor doctor){
