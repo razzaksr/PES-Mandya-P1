@@ -3,6 +3,7 @@ package org.pes.web_crud;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,7 @@ import jakarta.transaction.Transactional;
  */
 
 @Repository
-public interface DoctorDbRepo extends JpaRepository<Doctor,Integer> {
+public interface DoctorDbRepo extends JpaRepository<Doctor,Integer>, JpaSpecificationExecutor<Doctor> {
     // user defined non writable logic method
     List<Doctor> findAllByDoctorExperience(int experienece);
 

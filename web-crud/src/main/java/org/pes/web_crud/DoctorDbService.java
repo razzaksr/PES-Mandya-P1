@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -14,6 +17,14 @@ public class DoctorDbService {
     // dependency injection
     @Autowired
     DoctorDbRepo repository;
+
+    public Page<Doctor> getFilteredProducts(List<SearchCriteria> criteriaList, Pageable pageable) {
+        Specification<Doctor> spec = Specification.where(null);
+        for (SearchCriteria criteria : criteriaList) {
+            spec = spec.and(new DoctorSpecification(criteria));
+        }
+        return repository.findAll(spec, pageable);
+    }
 
     public void changeByExperience(int exp){
         repository.updateByExperience(exp);

@@ -1,0 +1,14 @@
+# GET http://localhost:8082/doc/specs?filters=[{"key":"doctorExperience","operation":">","value":"10"}]&page=0&size=5&sortBy=doctorName&sortDir=asc
+
+POST http://localhost:8082/doc/specs
+Content-Type: application/json
+
+{
+    "filters": [
+        {"key": "doctorExperience", "operation": ">", "value": "1"}
+    ],
+    "page": 0,
+    "size": 5,
+    "sortBy": "doctorName",
+    "sortDir": "asc"
+}
