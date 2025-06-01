@@ -1,5 +1,23 @@
 # GET http://localhost:8082/doc/specs?filters=[{"key":"doctorExperience","operation":">","value":"10"}]&page=0&size=5&sortBy=doctorName&sortDir=asc
+GET http://localhost:8082/doc/1
+Authorization: Basic razzaksr:mohamed
+###
+GET http://localhost:8082/doc/view
+Authorization: Basic razzaksr:mohamed
+###
+GET http://localhost:8082/doc/view
+Authorization: Basic razzaksr:mohamed
+###
+POST http://localhost:8082/hr/
+Content-Type: application/json
 
+{
+    "name":"Razak Mohamed S",
+    "username":"razzaksr",
+    "password":"mohamed",
+    "role":"admin"
+}
+###
 POST http://localhost:8082/doc/specs
 Content-Type: application/json
 
