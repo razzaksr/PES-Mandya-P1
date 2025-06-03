@@ -1,0 +1,111 @@
+PES Java Backend API:
+
+Basic Patient Enrollment CLI:
+
+
+
+CRUD App:
+
+to deploy:
+
+add build, plugins
+
+maven commands:
+clean package
+
+target>> jar
+
+go to the target:
+java -jar crudapp-1.0-SNAPSHOT.jar
+
+
+
+https://github.com/razzaksr/PES-Mandya-P1
+
+
+
+
+
+
+
+Spring framework: 
+IOC
+DI
+
+
+POJO
+	1. Subject
+		subjectName
+		subjectSemester
+		subjectCredit
+		subjectNature
+
+
+
+
+
+
+
+Spring boot web:
+
+https://www.flipkart.com/grocery-supermart-store?marketplace=GROCERY&fm=neo%2Fmerchandising&iid=M_1a2cd40f-8456-4751-8637-a041bfb15817_1_372UD5BXDFYS_MC.CBUR1Q46W5F1&otracker=hp_rich_navigation_1_1.navigationCard.RICH_NAVIGATION_Kilos_CBUR1Q46W5F1&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_1_L0_view-all&cid=CBUR1Q46W5F1
+
+
+DNS or IP:PORT/routes/endpoints
+https://www.flipkart.com/grocery-supermart-store
+https://www.flipkart.com/exercise-fitness
+https://www.flipkart.com/account/
+https://www.flipkart.com/account/orders
+
+
+Front end: used to send the request and receive response
+	UI	>> request, response done via pages/html
+	Clients> request, response done via JSON/ XML
+
+Backend/ API: Accept, process the requests, and send response to client:
+	
+	Controller >> request, response done via pages/html
+
+Web service:
+	JSON/ Rest API
+	XML/ SOAP API
+	RestController>> request, response done via JSON/ XML
+
+
+
+
+hql:
+from Doctor;
+Select doctorName from Doctor;
+
+sql:
+select * from surgeon;
+select surgeon_name from surgeon;
+
+
+
+
+
+
+
+
+
+
+
+
+
+Use case:
+
+Build the Spring boot API with basic CRUD on Loan POJO has properties of following:
+loanNature
+loanROI
+loanDuration
+loanMax
+
+along with perform following user defined logics:
+1. findAllByLoanROI
+HQL Based:
+2. findAllByLoanMaxBetween(int min, int max)
+
+
+
